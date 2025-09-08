@@ -6,10 +6,18 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+
+const allowedOrigins = [
+  'http://localhost:5173', // local dev
+  'https://rachedsouihi.github.io', // The GitHub Pages site
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Your frontend URL
-  credentials: true
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: false, // No cookies or credentials needed
 }));
+
 // Routes
 app.use('/contact', contactRoutes);
 
