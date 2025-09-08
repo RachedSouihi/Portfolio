@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { toast } from 'react-hot-toast';
 
@@ -42,8 +42,19 @@ export default function Contact() {
 
   };
 
-  const isDarkMode = document.documentElement.classList.contains('dark');
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  // Track dark mode with state
+  const [isDarkMode, setIsDarkMode] = useState(() =>
+    document.documentElement.classList.contains('dark')
+  );
+
+  useEffect(() => {
+    // Listen for class changes on <html>
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   // React Spring animation for the text
   const textSpring = useSpring({
@@ -52,6 +63,14 @@ export default function Contact() {
     config: { tension: 180, friction: 12 },
     delay: 200,
   });
+
+  // Arrow image selection
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const arrowSrc = isMobile
+    ? 'down-arrow.png'
+    : isDarkMode
+    ? 'r-arrow.png'
+    : 'dark-right-arrow.png';
 
 
 
@@ -76,7 +95,7 @@ export default function Contact() {
             {/* Arrow Image */}
             <div className="relative mx-auto mt-10">
               <animated.img
-                src={isMobile ? '/down-arrow.png' : isDarkMode ? '/r-arrow.png' : '/dark-right-arrow.png'}
+                src={arrowSrc}
                 alt="Arrow"
                 width={400}
                 className="mx-auto"
