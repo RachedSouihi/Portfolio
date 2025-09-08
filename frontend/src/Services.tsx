@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const ServicesSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(0);

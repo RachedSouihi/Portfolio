@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSpring, useTrail, animated } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 

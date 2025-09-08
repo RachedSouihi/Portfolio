@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import './App.css'
 import Header from './Header'
 import Contact from './Contact'

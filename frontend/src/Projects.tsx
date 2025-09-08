@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import {
 	FiArrowLeft,
 	FiArrowRight,
-	FiExternalLink,
 	FiGithub,
 } from "react-icons/fi";
 
