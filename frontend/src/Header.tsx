@@ -216,7 +216,7 @@ export default function Header() {
                 </div>
             </header>
 
-            <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0D1117] dark:to-[#161B22] text-gray-900 dark:text-white px-6 md:px-16 py-12 flex justify-center items-center">
+            <div id='about' className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0D1117] dark:to-[#161B22] text-gray-900 dark:text-white px-6 md:px-16 py-12 flex justify-center items-center">
 
 
                 <div className="flex flex-col md:flex-row-reverse items-center max-w-7xl w-full">
