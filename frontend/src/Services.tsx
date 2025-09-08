@@ -45,7 +45,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#F5F7FA] to-[#E0ECFF] dark:from-[#0D1117] dark:to-[#10161D]">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#F5F7FA] to-[#E0ECFF] dark:from-[#0D1117] dark:to-[#10161D]" id='services'>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#0D1117] dark:text-[#FAFAFA]">

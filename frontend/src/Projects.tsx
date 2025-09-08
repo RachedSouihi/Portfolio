@@ -26,7 +26,7 @@ const projects = [
 			"A platform for job seekers to find and apply for jobs, and for employers to post job openings.",
 		technologies: ["Angular", "TypeScript", "Express.js", "MySQL", "Bootstrap"],
 		link: "#",
-		github: "#",
+		github: "https://github.com/RachedSouihi/JobPortal",
 	},
 	{
 		id: 2,
@@ -87,14 +87,9 @@ export default function ProjectsCarousel() {
 				direction === "left" ? "translateX(12%) scale(0.98)" : "translateX(-12%) scale(0.98)",
 		},
 		config: {
-			
-			
 			tension: 500,
 			friction: 22,
-			
-			// use duration-free spring for natural motion; duration may be added if needed
 		},
-		// remove trail to animate the full page simultaneously
 	});
 
 	const handlePrev = () => {
@@ -112,7 +107,7 @@ export default function ProjectsCarousel() {
 	};
 
 	return (
-		<section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F5F7FA] dark:bg-[#0D1117] text-[#0D1117] dark:text-white">
+		<section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F5F7FA] dark:bg-[#0D1117] text-[#0D1117] dark:text-white" id="projects">
 			<div className="max-w-7xl mx-auto">
 				<div className="text-center mb-16">
 					<h2 className="text-4xl font-bold text-[#0D1117] dark:text-white">

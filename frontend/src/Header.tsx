@@ -241,7 +241,7 @@ export default function Header() {
                                 transform: headingSpring.y.to((y: any) => `translateY(${y}px)`),
                                 fontFamily: 'Orbitron, sans-serif',
                             }}
-                            className="text-4xl sm:text-5xl font-bold leading-tight"
+                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
                         >
                             Hi, I’m Rached —<br />
                             a Computer Science graduate & <span className="text-[#3E8CFF] dark:text-blue-500">full-stack developer</span> passionate about building modern, impactful software.
@@ -252,7 +252,7 @@ export default function Header() {
                                 ...paragraphSpring,
                                 transform: paragraphSpring.y.to((y: any) => `translateY(${y}px)`),
                             }}
-                            className="mt-6 text-lg text-gray-600 dark:text-gray-400"
+                            className="mt-6 text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400"
                         >
                             I specialize in crafting seamless user experiences and scalable backend systems, blending design with functionality.
                         </animated.p>
@@ -265,12 +265,3 @@ export default function Header() {
         </>
     );
 }
-
-
-/* <a href="#" className="flex items-center" aria-label="Home">
-                                <div className="rounded-full flex items-center justify-center">
-                                    <img src='logo.png' width={55} />                                    
-                                </div>
-                            </a>
-
-                            */

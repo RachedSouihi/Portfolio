@@ -3,8 +3,6 @@ import { useSpring, animated } from '@react-spring/web';
 import { toast } from 'react-hot-toast';
 
 
-
-import "./t.css"
 import { submitContactForm } from './api/contact';
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -77,7 +75,7 @@ export default function Contact() {
 
 
   return (
-    <div className="w-full mx-auto p-6 md:p-8 bg-[#F5F7FA] dark:bg-[#0D1117] shadow-xl">
+    <div className="w-full mx-auto p-6 md:p-8 bg-[#F5F7FA] dark:bg-[#0D1117] shadow-xl" id='contact'>
       <div className="flex flex-col md:flex-row items-start gap-8 max-w-7xl mx-auto">
         {/* Left Section */}
         <div className="flex-1 relative">
@@ -86,14 +84,14 @@ export default function Contact() {
             <div className="flex flex-col items-start gap-3 mb-10">
               <animated.span
                 style={{ ...textSpring, fontFamily: 'Orbitron, sans-serif' }}
-                className="text-lg sm:text-5xl font-semibold text-[#0D1117] dark:text-[#FAFAFA]"
+                className="font-semibold text-[#0D1117] dark:text-[#FAFAFA] text-2xl sm:text-4xl md:text-5xl"
               >
                 It’s time to build something exciting 🚀
               </animated.span>
             </div>
 
             {/* Arrow Image */}
-            <div className="relative mx-auto mt-10">
+            <div className="relative mx-auto mt-10 hidden md:block">
               <animated.img
                 src={arrowSrc}
                 alt="Arrow"
@@ -106,7 +104,7 @@ export default function Contact() {
         </div>
 
         {/* Right Section (Contact Form with Glowing Aura) */}
-        <div className="flex-1 max-w-2xl mt-10 relative glow-effect">
+        <div className="w-full md:max-w-2xl flex-1 mt-10 relative glow-effect">
           <form
             onSubmit={handleSubmit}
             className="relative z-10 space-y-6 bg-white dark:bg-[#161B22] rounded-2xl p-8 shadow-xl"
