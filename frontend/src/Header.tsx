@@ -229,7 +229,7 @@ export default function Header() {
                         className="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-[#3E8CFF] dark:border-blue-500 flex-shrink-0 mb-8 md:mb-0 md:ml-12"
                     >
                         <img
-                            src="/RachedUS24.jpg"
+                            src="RachedUS24.jpg"
                             alt="Rached profile"
                             className="object-cover w-full h-full"
                         />
