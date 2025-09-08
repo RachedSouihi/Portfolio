@@ -221,12 +221,7 @@ export default function ProjectsCarousel() {
 												>
 													<FiGithub className="w-5 h-5" /> Code
 												</a>
-												<a
-													href={item.link}
-													className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white rounded-lg font-medium hover:opacity-90 transition"
-												>
-													<FiExternalLink className="w-5 h-5" /> Demo
-												</a>
+												
 											</div>
 										</div>
 									))}

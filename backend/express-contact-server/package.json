@@ -1,0 +1,34 @@
+{
+  "name": "express-contact-server",
+  "version": "1.0.0",
+  "description": "A simple Express.js server to handle contact form submissions and send emails.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "build": "tsc",
+    "dev": "ts-node-dev src/app.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.6.3",
+    "dotenv": "^10.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "@types/node": "^16.11.7",
+    "@types/express": "^4.17.13"
+  },
+  "keywords": [
+    "express",
+    "contact",
+    "form",
+    "email",
+    "nodemailer"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
