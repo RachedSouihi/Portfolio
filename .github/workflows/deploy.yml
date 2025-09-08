@@ -2,7 +2,7 @@ name: Deploy Portfolio
 
 
 permissions:
-  contents: read
+  contents: write
   pages: write
 on:
   push:
