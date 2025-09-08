@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:5000/contact'; // Replace with your actual API endpoint
+const API_URL = 'https://portfolio-backend-vo7e.onrender.com/contact';
 
 export const submitContactForm = async (formData: any) => {
   try {

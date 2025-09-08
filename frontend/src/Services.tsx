@@ -98,17 +98,7 @@ const ServicesSection = () => {
                     ${hoveredCard === index ? 'text-white' : 'text-[#5F00FF] dark:text-[#7C3AED]'}`}
                   href="#"
                 >
-                  <span className="mr-2 group-hover:underline">Learn More</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-5 w-5 transition-transform duration-300 group-hover:translate-x-1
-                      ${hoveredCard === index ? 'text-white' : 'text-[#5F00FF] dark:text-[#7C3AED]'}`}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
+                 
                 </a>
               </div>
             </div>

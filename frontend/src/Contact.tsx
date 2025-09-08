@@ -2,42 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { toast } from 'react-hot-toast';
 
-
 import { submitContactForm } from './api/contact';
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    //toast.loading('Sending message...', { duration: 2000 , position: 'top-left'});
+    setIsSubmitting(true);
 
-   submitContactForm(formData).then(() => {
-
+    try {
+      await submitContactForm(formData);
       console.log('Form submitted:', formData);
-
       toast.success('Message sent successfully!');
-
-
-
-
-
       setFormData({ name: '', subject: '', message: '' });
-
-
-    }).catch( (error) => {
+    } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Failed to send message.');
-    })
-
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Track dark mode with state
@@ -46,7 +40,6 @@ export default function Contact() {
   );
 
   useEffect(() => {
-    // Listen for class changes on <html>
     const observer = new MutationObserver(() => {
       setIsDarkMode(document.documentElement.classList.contains('dark'));
     });
@@ -70,10 +63,6 @@ export default function Contact() {
     ? 'r-arrow.png'
     : 'dark-right-arrow.png';
 
-
-
-
-
   return (
     <div className="w-full mx-auto p-6 md:p-8 bg-[#F5F7FA] dark:bg-[#0D1117] shadow-xl" id='contact'>
       <div className="flex flex-col md:flex-row items-start gap-8 max-w-7xl mx-auto">
@@ -86,7 +75,7 @@ export default function Contact() {
                 style={{ ...textSpring, fontFamily: 'Orbitron, sans-serif' }}
                 className="font-semibold text-[#0D1117] dark:text-[#FAFAFA] text-2xl sm:text-4xl md:text-5xl"
               >
-                It’s time to build something exciting 🚀
+                It's time to build something exciting 🚀
               </animated.span>
             </div>
 
@@ -120,7 +109,8 @@ export default function Contact() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#161B22] border border-[#CBD5E0] dark:border-[#2D3748] rounded-lg focus:ring-2 focus:ring-[#3E8CFF] focus:border-transparent outline-none transition-all duration-300 text-[#0D1117] dark:text-[#FAFAFA]"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 bg-white dark:bg-[#161B22] border border-[#CBD5E0] dark:border-[#2D3748] rounded-lg focus:ring-2 focus:ring-[#3E8CFF] focus:border-transparent outline-none transition-all duration-300 text-[#0D1117] dark:text-[#FAFAFA] disabled:opacity-70 disabled:cursor-not-allowed"
                   placeholder="Enter your name"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -142,7 +132,8 @@ export default function Contact() {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#161B22] border border-[#CBD5E0] dark:border-[#2D3748] rounded-lg focus:ring-2 focus:ring-[#3E8CFF] focus:border-transparent outline-none transition-all duration-300 text-[#0D1117] dark:text-[#FAFAFA]"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 bg-white dark:bg-[#161B22] border border-[#CBD5E0] dark:border-[#2D3748] rounded-lg focus:ring-2 focus:ring-[#3E8CFF] focus:border-transparent outline-none transition-all duration-300 text-[#0D1117] dark:text-[#FAFAFA] disabled:opacity-70 disabled:cursor-not-allowed"
                   placeholder="What's this regarding?"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -165,7 +156,8 @@ export default function Contact() {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#161B22] border border-[#CBD5E0] dark:border-[#2D3748] rounded-lg focus:ring-2 focus:ring-[#3E8CFF] focus:border-transparent outline-none transition-all duration-300 text-[#0D1117] dark:text-[#FAFAFA] resize-none"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 bg-white dark:bg-[#161B22] border border-[#CBD5E0] dark:border-[#2D3748] rounded-lg focus:ring-2 focus:ring-[#3E8CFF] focus:border-transparent outline-none transition-all duration-300 text-[#0D1117] dark:text-[#FAFAFA] resize-none disabled:opacity-70 disabled:cursor-not-allowed"
                   placeholder="Your message here..."
                 />
                 <div className="absolute top-3 right-0 flex items-center pr-3">
@@ -179,14 +171,26 @@ export default function Contact() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-3 px-6 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white font-medium rounded-lg shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E8CFF] dark:focus:ring-offset-[#0D1117]"
+              disabled={isSubmitting}
+              className="w-full py-3 px-6 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white font-medium rounded-lg shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E8CFF] dark:focus:ring-offset-[#0D1117] disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-lg flex items-center justify-center"
             >
-              Send Message
-              <span className="ml-2">→</span>
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <span className="ml-2">→</span>
+                </>
+              )}
             </button>
           </form>
         </div>
-
       </div>
     </div>
   );
