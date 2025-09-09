@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 
 interface ContactFormInput {
   name: string;
+  email: string;
   subject: string;
   message: string;
 }
@@ -11,6 +12,16 @@ export function validateInput(data: ContactFormInput): string[] {
 
   if (!data.name || data.name.trim().length === 0) {
     errors.push('Name is required.');
+  }
+
+  if (!data.email || data.email.trim().length === 0) {
+    errors.push('Email is required.');
+  } else {
+    // Simple email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      errors.push('Email is invalid.');
+    }
   }
 
   if (!data.subject || data.subject.trim().length === 0) {

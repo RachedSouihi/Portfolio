@@ -7,7 +7,7 @@ import path from 'path';
 
 config({ path: path.resolve(__dirname, '../.env') });
 
-const sendEmail = async (name: string, subject: string, message: string) => {
+const sendEmail = async (name: string, email: string, subject: string, message: string) => {
 
 
 
@@ -23,13 +23,14 @@ const sendEmail = async (name: string, subject: string, message: string) => {
   });
 
   const mailOptions = {
-    from: `"${name}" <${process.env.VITE_EMAIL_USER}>`,
+    from: `"${name}" <${email}>`,
     to: process.env.VITE_EMAIL_RECEIVER,
     subject: subject,
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <h2 style="color: #333;">New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
         <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
         <p style="white-space: pre-wrap;">${message}</p>
