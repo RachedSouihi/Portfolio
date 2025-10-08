@@ -6,6 +6,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   plugins: [react()],
   base: '/Portfolio/',
+  envDir: 'C:/Users/souih/OneDrive/Bureau/portfolio/frontend/',
   /*test: {
     globals: true,
     environment: 'jsdom',
